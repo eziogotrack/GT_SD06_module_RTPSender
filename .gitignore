@@ -1,0 +1,4 @@
+built/
+built/CMakeFiles
+built/src
+built/tests

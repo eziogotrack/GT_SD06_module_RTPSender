@@ -1,4 +1,5 @@
 #include "CustomFramedSource.hh"
+#include <iostream>
 
 CustomFramedSource::CustomFramedSource(UsageEnvironment& env) : FramedSource(env) {}
 
@@ -14,12 +15,14 @@ CustomFramedSource* CustomFramedSource::createNew(UsageEnvironment& env) {
 }
 
 void CustomFramedSource::deliverFrame(unsigned char* frame, unsigned frameSize, struct timeval timestamp) {
+    std::cout << "Delivering frame of size: " << frameSize << "\n";
     std::lock_guard<std::mutex> lock(queueMutex);
     unsigned char* frameCopy = new unsigned char[frameSize];
     memcpy(frameCopy, frame, frameSize);
     frameQueue.push({frameCopy, frameSize});
     lastTimestamp = timestamp;
     if (isCurrentlyAwaitingData()) {
+        std::cout << "Calling doGetNextFrame from deliverFrame\n";
         doGetNextFrame();
     }
 }

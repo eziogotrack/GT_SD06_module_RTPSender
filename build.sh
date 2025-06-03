@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ========== CONFIGURATION ==========
-EXECUTABLE=module-rtmp
+EXECUTABLE=module_rtpsender
 TOOLCHAIN=toolchain-mc6630.cmake
 USE_TOOLCHAIN=true
 # ===================================
@@ -52,6 +52,8 @@ case "$1" in
         clean ;;
     run)
         run ;;
+    cross)
+        clean && generate && build && cp -f $BUILD_DIR/$EXECUTABLE /mnt/shared_nfs/stream/ ;;
     help|*)
         help ;;
 esac

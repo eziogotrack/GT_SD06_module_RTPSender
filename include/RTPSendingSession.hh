@@ -32,7 +32,7 @@ public:
     /**
      * Start the session:
      * @param serverIp    : IP or hostname of the media server (ZLMediaKit)
-     * @param rtpPort     : RTP port (RTCP default = rtpPort+1)
+     * @param rtpPort     : RTP port (RTCP default = rtpPort+1 for UDP mode)
      * @param outCallback : reference to a std::function provided by the user,
      *                      the class will assign a lambda to outCallback for the user to call to push frames.
      * @return true if started successfully, false if there was an error.
@@ -47,14 +47,11 @@ public:
     void stop();
 
 private:
-    // Function running in a separate thread, contains all Live555 logic + SDP sending + event loop
+    // Function running in a separate thread, contains all Live555 logic + HTTP API calls to register stream and start RTP push + event loop
     void eventLoop();
 
-    // Generate SDP content (uses #ifdef USE_RTP_OVER_TCP)
-    std::string generateSDP(const std::string& ip, int port);
-
-    // Send SDP to ZLMediaKit (HTTP POST)
-    void sendSdpToZLMediaKit(const std::string& sdp, const std::string& serverUrl);
+    // Start RTP push to ZLMediaKit via HTTP API
+    bool startRtpPush(const std::string& serverIp, int rtpPort, const std::string& serverUrl);
 
     // Internal function to deliver a frame to CustomFramedSource
     void deliverFrameToSource(unsigned char* frame, unsigned frameSize, struct timeval timestamp);
@@ -72,6 +69,8 @@ private:
     H264VideoStreamFramer*        videoSource_;
     H264VideoRTPSink*             videoSink_;
     RTCPInstance*                 rtcpInstance_;
+    Groupsock* rtpGroupsock_ = nullptr;
+    Groupsock* rtcpGroupsock_ = nullptr;
 
     // TCP socket (if using RTP-over-TCP)
     int                           tcpSocket_;

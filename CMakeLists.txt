@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(include)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include)
-
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include/recordlib)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include/live555/BasicUsageEnvironment)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include/live555/UsageEnvironment)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include/live555/liveMedia)
@@ -14,8 +14,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include/live555/groupso
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/lib/live555)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/lib/openssl)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/lib/curl)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/lib/recordlib)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdlib/include/recordlib)
 
 link_libraries(
     -lpthread

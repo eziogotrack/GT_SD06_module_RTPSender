@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/include -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/BasicUsageEnvironment -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/UsageEnvironment -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/liveMedia -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/groupsock 
+CXX_INCLUDES = -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/include -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/recordlib -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/BasicUsageEnvironment -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/UsageEnvironment -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/liveMedia -I/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/thirdlib/include/live555/groupsock 
 

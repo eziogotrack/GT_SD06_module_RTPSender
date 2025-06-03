@@ -14,6 +14,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "../thirdlib/include"
+  "../thirdlib/include/recordlib"
   "../thirdlib/include/live555/BasicUsageEnvironment"
   "../thirdlib/include/live555/UsageEnvironment"
   "../thirdlib/include/live555/liveMedia"
