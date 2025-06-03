@@ -1,0 +1,5 @@
+file(GLOB_RECURSE SRC_ROOT "*.cpp")
+
+set(ALL_SRCS ${SRC_ROOT})
+
+set(ALL_SRCS ${ALL_SRCS} PARENT_SCOPE)
