@@ -8,6 +8,7 @@
 #include <vector>
 
 #define MAX_CHANNELS 4
+#define FPS_SIMULATION 25
 
 int main(int argc, char** argv) {
     if (argc < 4) {
@@ -52,26 +53,24 @@ int main(int argc, char** argv) {
     s64 s_frame_pts = 0;
     char s_frame_buf[1024 * 1024];
 
+    useconds_t sleep_duration = 1000000 / FPS_SIMULATION / MAX_CHANNELS;
+
     while (ze_mxm_read_frame(reader, &s_chn, &s_stream_type, &s_frame_type,
                               &s_frame_len, &s_frame_pts, s_frame_buf) == 0) {
         if (s_chn < 0 || s_chn >= MAX_CHANNELS || s_frame_len <= 0) continue;
         if (s_frame_type != FRAME_TYPE_H264I && s_frame_type != FRAME_TYPE_H264P) continue;
 
-        std::cout << "[chn " << s_chn << "] Frame: type="
-                  << (s_frame_type == FRAME_TYPE_H264I ? "I" : "P")
-                  << ", len=" << s_frame_len
-                  << ", pts=" << std::fixed << std::setprecision(3)
-                  << (s_frame_pts / 1000000.0) << "s\n";
+        // std::cout << "[chn " << s_chn << "] Frame: type="
+        //           << (s_frame_type == FRAME_TYPE_H264I ? "I" : "P")
+        //           << ", len=" << s_frame_len
+        //           << ", pts=" << std::fixed << std::setprecision(3)
+        //           << (s_frame_pts / 1000000.0) << "s\n";
 
         sources[s_chn].pushFrame(reinterpret_cast<uint8_t*>(s_frame_buf), s_frame_len, s_frame_pts,
                                  s_chn, s_stream_type, s_frame_type);
                                  
-        // simulate 25fps but for 4 channels
-        // Adjust sleep time based on frame rate
-        // 15fps means 66.67ms per frame, divided by number of channels
-        // to simulate processing time
-        // Here we use 66.67ms / 4 channels = 16.67ms per channel
-        usleep(16667);
+        // simulate frame rate: FPS_SIMULATION
+        usleep(sleep_duration);
     }
 
     ze_mxm_read_close(reader);

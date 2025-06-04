@@ -36,7 +36,7 @@ private:
         int frame_type;
     };
 
-    static constexpr size_t MAX_QUEUE_SIZE = 3;
+    static constexpr size_t MAX_QUEUE_SIZE = 30;
 
     std::queue<Frame> frameQueue_;
     FrameCallback callback_ = nullptr;
