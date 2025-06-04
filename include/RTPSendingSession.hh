@@ -1,85 +1,67 @@
+// RTPSendingSession.hh
 #ifndef RTP_SENDING_SESSION_HH
 #define RTP_SENDING_SESSION_HH
 
-#include <liveMedia.hh>
-#include <BasicUsageEnvironment.hh>
-#include <GroupsockHelper.hh>
+#include <string>
 #include <netinet/in.h>
-#include <arpa/inet.h>
-#include <curl/curl.h>
-#include <functional>
-#include <thread>
-#include <atomic>
+#include <sys/time.h>
 #include <mutex>
-#include "CustomFramedSource.hh"
 
-//
-// If you want to switch to UDP, just comment the line below
-//
-// #define USE_RTP_OVER_TCP
-
+/**
+ * RTPSendingSession is responsible for sending H264 RTP packets (and RTCP)
+ * to a target server via UDP. It performs RTP header packing, NALU fragmentation (FU-A),
+ * and RTCP Sender Reports.
+ */
 class RTPSendingSession {
 public:
-    // Callback type that the user will call to push a frame in
-    // - frame: pointer to H264 data
-    // - frameSize: size of the frame
-    // - timestamp: presentation time
-    using FrameInjectCallback = std::function<void(unsigned char* frame, unsigned frameSize, struct timeval timestamp)>;
-
     RTPSendingSession();
     ~RTPSendingSession();
 
     /**
-     * Start the session:
-     * @param serverIp    : IP or hostname of the media server (ZLMediaKit)
-     * @param rtpPort     : RTP port (RTCP default = rtpPort+1 for UDP mode)
-     * @param outCallback : reference to a std::function provided by the user,
-     *                      the class will assign a lambda to outCallback for the user to call to push frames.
-     * @return true if started successfully, false if there was an error.
+     * Start the RTP session.
+     * @param ip        Target server IP
+     * @param rtpPort   Port to send RTP to (RTCP will use rtpPort+1)
+     * @param streamId  ZLMediaKit stream ID (for openRtpServer API)
      */
-    bool start(const std::string& serverIp,
-               int rtpPort,
-               FrameInjectCallback& outCallback);
+    bool start(const std::string& ip, int rtpPort, const std::string& streamId);
 
     /**
-     * Stop the session (pause streaming, close socket, etc.).
+     * Stop and cleanup the session.
      */
     void stop();
 
-private:
-    // Function running in a separate thread, contains all Live555 logic + HTTP API calls to register stream and start RTP push + event loop
-    void eventLoop();
-
-    // Start RTP push to ZLMediaKit via HTTP API
-    bool startRtpPush(const std::string& serverIp, int rtpPort, const std::string& serverUrl);
-
-    // Internal function to deliver a frame to CustomFramedSource
-    void deliverFrameToSource(unsigned char* frame, unsigned frameSize, struct timeval timestamp);
+    /**
+     * Push a raw H264 frame to be packetized and sent.
+     * @param data         Pointer to raw H264 frame (one or more NALUs with start codes)
+     * @param len          Length of the frame in bytes
+     * @param pts          Presentation timestamp (microseconds)
+     */
+    void sendFrame(const uint8_t* data, int len, int64_t pts);
 
 private:
-    std::string                   serverIp_;
-    int                           rtpPort_;
-    std::thread                   loopThread_;
-    EventLoopWatchVariable        running_;
+    bool createSockets();
+    void sendRtpPacket(const uint8_t* payload, size_t size, bool marker, uint32_t timestamp);
+    void sendRtcpSr(uint32_t timestamp);
+    void packetizeAndSendNalu(const uint8_t* nalu, int size, uint32_t timestamp);
+    void parseAndSendFrame(const uint8_t* data, int len, int64_t pts);
 
-    // Live555 objects
-    TaskScheduler*                scheduler_;
-    UsageEnvironment*             env_;
-    CustomFramedSource*           customSource_;
-    H264VideoStreamFramer*        videoSource_;
-    H264VideoRTPSink*             videoSink_;
-    RTCPInstance*                 rtcpInstance_;
-    Groupsock* rtpGroupsock_ = nullptr;
-    Groupsock* rtcpGroupsock_ = nullptr;
+private:
+    int rtpSock_;
+    int rtcpSock_;
+    sockaddr_in rtpAddr_;
+    sockaddr_in rtcpAddr_;
+    std::string serverIp_;
+    int rtpPort_;
+    std::string streamId_;
 
-    // TCP socket (if using RTP-over-TCP)
-    int                           tcpSocket_;
+    uint16_t rtpSeq_ = 0;
+    uint32_t rtpSsrc_ = 0x12345678;
+    int64_t basePts_ = -1;
+    uint32_t pktCount_ = 0;
+    uint32_t octetCount_ = 0;
+    int64_t lastRtcpPts_ = 0;
 
-    // Callback for the user to call (this will be a lambda assigned in start())
-    FrameInjectCallback           injectCallback_;
-
-    // Mutex to protect deliverFrame (in case of multithreading)
-    std::mutex                    deliverMutex_;
+    std::mutex sendMutex_;
 };
 
 #endif // RTP_SENDING_SESSION_HH

@@ -1,51 +1,39 @@
+// CustomFramedSource.cpp
 #include "CustomFramedSource.hh"
 #include <iostream>
 
-CustomFramedSource::CustomFramedSource(UsageEnvironment& env) : FramedSource(env) {}
+CustomFramedSource::CustomFramedSource() {}
 
-CustomFramedSource::~CustomFramedSource() {
-    while (!frameQueue.empty()) {
-        delete[] frameQueue.front().first;
-        frameQueue.pop();
-    }
+void CustomFramedSource::setCallback(FrameCallback cb) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    callback_ = cb;
 }
 
-CustomFramedSource* CustomFramedSource::createNew(UsageEnvironment& env) {
-    return new CustomFramedSource(env);
+void CustomFramedSource::pushFrame(const uint8_t* data, int len, int64_t pts,
+                                   int chn, int stream_type, int frame_type) {
+    std::lock_guard<std::mutex> lock(mutex_);
+
+    // Drop oldest if buffer is full
+    if (frameQueue_.size() >= MAX_QUEUE_SIZE) {
+        frameQueue_.pop();
+    }
+
+    Frame frame;
+    frame.buff.assign(data, data + len);
+    frame.pts = pts;
+    frame.chn = chn;
+    frame.stream_type = stream_type;
+    frame.frame_type = frame_type;
+    frameQueue_.push(std::move(frame));
+
+    deliverNext();
 }
 
-void CustomFramedSource::deliverFrame(unsigned char* frame, unsigned frameSize, struct timeval timestamp) {
-    std::cout << "Delivering frame of size: " << frameSize << "\n";
-    std::lock_guard<std::mutex> lock(queueMutex);
-    unsigned char* frameCopy = new unsigned char[frameSize];
-    memcpy(frameCopy, frame, frameSize);
-    frameQueue.push({frameCopy, frameSize});
-    lastTimestamp = timestamp;
-    if (isCurrentlyAwaitingData()) {
-        std::cout << "Calling doGetNextFrame from deliverFrame\n";
-        doGetNextFrame();
-    }
-}
+void CustomFramedSource::deliverNext() {
+    if (!callback_ || frameQueue_.empty()) return;
 
-void CustomFramedSource::doGetNextFrame() {
-    std::lock_guard<std::mutex> lock(queueMutex);
-    if (!frameQueue.empty()) {
-        auto framePair = frameQueue.front();
-        unsigned char* frame = framePair.first;
-        unsigned frameSize = framePair.second;
-        if (frameSize > fMaxSize) {
-            fFrameSize = fMaxSize;
-            fNumTruncatedBytes = frameSize - fMaxSize;
-        } else {
-            fFrameSize = frameSize;
-            fNumTruncatedBytes = 0;
-        }
-        memcpy(fTo, frame, fFrameSize);
-        fPresentationTime = lastTimestamp;
-        frameQueue.pop();
-        delete[] frame;
-        afterGetting(this);
-    } else {
-        handleClosure(this);
-    }
+    const Frame& frame = frameQueue_.front();
+    callback_(frame.buff.data(), static_cast<int>(frame.buff.size()), frame.pts,
+              frame.chn, frame.stream_type, frame.frame_type);
+    frameQueue_.pop();
 }

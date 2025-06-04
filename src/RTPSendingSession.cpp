@@ -1,178 +1,192 @@
+// RTPSendingSession.cpp
 #include "RTPSendingSession.hh"
+#include <arpa/inet.h>
 #include <unistd.h>
-#include <signal.h>
 #include <cstring>
 #include <iostream>
-#include <iomanip>
 #include <sstream>
+#include <vector>
 #include <curl/curl.h>
-#include <chrono>
-#include <thread>
-#include <random>
+#include <sys/socket.h>
+#include <sys/time.h>
 
-RTPSendingSession::RTPSendingSession()
-    : scheduler_(nullptr),
-      env_(nullptr),
-      customSource_(nullptr),
-      videoSource_(nullptr),
-      videoSink_(nullptr),
-      rtcpInstance_(nullptr),
-      tcpSocket_(-1),
-      rtpGroupsock_(nullptr),
-      rtcpGroupsock_(nullptr),
-      running_(0) {}
+#define RTP_VERSION 2
+#define RTP_PAYLOAD_TYPE_H264 98
+#define RTP_MTU 1400
+
+#pragma pack(push, 1)
+struct RtpHeader {
+    uint8_t vpxcc;
+    uint8_t mpt;
+    uint16_t seq;
+    uint32_t timestamp;
+    uint32_t ssrc;
+};
+
+struct RtcpHeader {
+    uint8_t version_p_count;
+    uint8_t packet_type;
+    uint16_t length;
+    uint32_t ssrc;
+    uint32_t ntp_sec;
+    uint32_t ntp_frac;
+    uint32_t rtp_timestamp;
+    uint32_t packet_count;
+    uint32_t octet_count;
+};
+#pragma pack(pop)
+
+RTPSendingSession::RTPSendingSession() : rtpSock_(-1), rtcpSock_(-1) {}
 
 RTPSendingSession::~RTPSendingSession() {
     stop();
 }
 
-bool RTPSendingSession::start(const std::string& serverIp,
-                              int rtpPort,
-                              FrameInjectCallback& outCallback) {
-    if (running_) {
-        std::cout << "[Error] [RTPSendingSession] Already running!\n";
-        return false;
-    }
+bool RTPSendingSession::start(const std::string& ip, int port, const std::string& streamId) {
+    serverIp_ = ip;
+    rtpPort_ = port;
+    streamId_ = streamId;
 
-    if (rtpPort < 1024 || rtpPort > 65535) {
-        std::cout << "[Error] [RTPSendingSession] Invalid RTP port: " << rtpPort << "\n";
-        return false;
-    }
+    std::ostringstream url;
+    url << "http://" << ip << ":80/index/api/openRtpServer?"
+        << "secret=2RY8OlPtstBt96XhkGREio2gW4haRG1E"
+        << "&port=" << port
+        << "&enable_tcp=0"
+        << "&stream_id=" << streamId;
 
-    serverIp_ = serverIp;
-    rtpPort_ = rtpPort;
-    running_ = 1;
+    CURL* curl = curl_easy_init();
+    if (!curl) return false;
 
-    injectCallback_ = [this](unsigned char* frame, unsigned frameSize, struct timeval timestamp) {
-        this->deliverFrameToSource(frame, frameSize, timestamp);
-    };
-    outCallback = injectCallback_;
+    curl_easy_setopt(curl, CURLOPT_URL, url.str().c_str());
+    curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 5L);
 
-    loopThread_ = std::thread(&RTPSendingSession::eventLoop, this);
-    return true;
+    CURLcode res = curl_easy_perform(curl);
+    curl_easy_cleanup(curl);
+
+    if (res != CURLE_OK) return false;
+
+    return createSockets();
 }
 
 void RTPSendingSession::stop() {
-    if (!running_) return;
-    running_ = 0;
-    if (env_) {
-        env_->taskScheduler().triggerEvent(0, nullptr);
+    if (rtpSock_ >= 0) close(rtpSock_);
+    if (rtcpSock_ >= 0) close(rtcpSock_);
+}
+
+bool RTPSendingSession::createSockets() {
+    rtpSock_ = socket(AF_INET, SOCK_DGRAM, 0);
+    rtcpSock_ = socket(AF_INET, SOCK_DGRAM, 0);
+    if (rtpSock_ < 0 || rtcpSock_ < 0) return false;
+
+    memset(&rtpAddr_, 0, sizeof(rtpAddr_));
+    rtpAddr_.sin_family = AF_INET;
+    rtpAddr_.sin_port = htons(rtpPort_);
+    inet_pton(AF_INET, serverIp_.c_str(), &rtpAddr_.sin_addr);
+
+    memset(&rtcpAddr_, 0, sizeof(rtcpAddr_));
+    rtcpAddr_.sin_family = AF_INET;
+    rtcpAddr_.sin_port = htons(rtpPort_ + 1);
+    inet_pton(AF_INET, serverIp_.c_str(), &rtcpAddr_.sin_addr);
+
+    return true;
+}
+
+void RTPSendingSession::sendFrame(const uint8_t* data, int len, int64_t pts) {
+    std::lock_guard<std::mutex> lock(sendMutex_);
+    if (basePts_ < 0) basePts_ = pts;
+    int64_t delta = pts - basePts_;
+    uint32_t timestamp = static_cast<uint32_t>((delta / 1000000.0) * 90000);
+    parseAndSendFrame(data, len, pts);
+
+    if ((pts - lastRtcpPts_) >= 1000000) {
+        sendRtcpSr(timestamp);
+        lastRtcpPts_ = pts;
     }
-    if (loopThread_.joinable()) {
-        loopThread_.join();
-    }
 }
 
-void RTPSendingSession::deliverFrameToSource(unsigned char* frame, unsigned frameSize, struct timeval timestamp) {
-    std::lock_guard<std::mutex> locker(deliverMutex_);
-    if (customSource_) {
-        customSource_->deliverFrame(frame, frameSize, timestamp);
-    } else {
-        std::cout << "[RTPSendingSession] CustomFramedSource not initialized, cannot deliver frame\n";
-    }
+void RTPSendingSession::sendRtpPacket(const uint8_t* payload, size_t size, bool marker, uint32_t timestamp) {
+    RtpHeader header;
+    header.vpxcc = (RTP_VERSION << 6);
+    header.mpt = (marker ? 0x80 : 0x00) | (RTP_PAYLOAD_TYPE_H264 & 0x7F);
+    header.seq = htons(rtpSeq_++);
+    header.timestamp = htonl(timestamp);
+    header.ssrc = htonl(rtpSsrc_);
+
+    std::vector<uint8_t> packet(sizeof(RtpHeader) + size);
+    memcpy(packet.data(), &header, sizeof(header));
+    memcpy(packet.data() + sizeof(header), payload, size);
+
+    sendto(rtpSock_, packet.data(), packet.size(), 0, (sockaddr*)&rtpAddr_, sizeof(rtpAddr_));
+    pktCount_++;
+    octetCount_ += size;
 }
 
-bool RTPSendingSession::startRtpPush(const std::string& serverIp, int rtpPort, const std::string& serverUrl) {
-    CURL* curl = curl_easy_init();
-    if (!curl) {
-        std::cout << "[Error] [RTPSendingSession] libcurl init failed\n";
-        return false;
-    }
-    std::string vhost = "__defaultVhost__";
-    std::string secret = "2RY8OlPtstBt96XhkGREio2gW4haRG1E";
-    std::string url = serverUrl + "/index/api/openRtpServer?";
-    url += "secret=" + secret;
-    url += "&port=" + std::to_string(rtpPort);
-    url += "&stream_id=cam01";
-#ifdef USE_RTP_OVER_TCP
-{
-    url += "&enable_tcp=1";
-}
-#else
-{
-    url += "&enable_tcp=0";
-}
-#endif
-    std::cout << "[RTPSendingSession] Sending API request: " << url << "\n";
-    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-    curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
-    CURLcode res = curl_easy_perform(curl);
-    bool success = (res == CURLE_OK);
-    if (!success) {
-        std::cout << "[Error] [RTPSendingSession] Failed to start RTP push: " << curl_easy_strerror(res) << "\n";
-    }
-    curl_easy_cleanup(curl);
-    return success;
+void RTPSendingSession::sendRtcpSr(uint32_t timestamp) {
+    struct timeval now;
+    gettimeofday(&now, nullptr);
+
+    RtcpHeader sr;
+    sr.version_p_count = (RTP_VERSION << 6);
+    sr.packet_type = 200;
+    sr.length = htons(6);
+    sr.ssrc = htonl(rtpSsrc_);
+    sr.ntp_sec = htonl(now.tv_sec + 2208988800U);
+    sr.ntp_frac = htonl((uint32_t)(((uint64_t)now.tv_usec << 32) / 1000000));
+    sr.rtp_timestamp = htonl(timestamp);
+    sr.packet_count = htonl(pktCount_);
+    sr.octet_count = htonl(octetCount_);
+
+    sendto(rtcpSock_, &sr, sizeof(sr), 0, (sockaddr*)&rtcpAddr_, sizeof(rtcpAddr_));
 }
 
-void RTPSendingSession::eventLoop() {
-    std::string serverUrl = "http://" + serverIp_ + ":80";
-    std::cout << "[RTPSendingSession] Started RTP push to " << serverUrl << "\n";
+void RTPSendingSession::packetizeAndSendNalu(const uint8_t* nalu, int size, uint32_t timestamp) {
+    const int maxPayload = RTP_MTU;
+    uint8_t nalHeader = nalu[0];
+    uint8_t nalType = nalHeader & 0x1F;
 
-    scheduler_ = BasicTaskScheduler::createNew();
-    std::cout << "[RTPSendingSession] Created BasicTaskScheduler (" << (scheduler_ ? "success" : "failed") << ")\n";
-    env_ = BasicUsageEnvironment::createNew(*scheduler_);
-    std::cout << "[RTPSendingSession] Created BasicUsageEnvironment (" << (env_ ? "success" : "failed") << ")\n";
-
-    customSource_ = CustomFramedSource::createNew(*env_);
-    if (!customSource_) goto cleanup;
-    std::cout << "[RTPSendingSession] Created CustomFramedSource (success)\n";
-
-    videoSource_ = H264VideoStreamFramer::createNew(*env_, customSource_);
-    if (!videoSource_) goto cleanup;
-
-#ifdef USE_RTP_OVER_TCP
-{
-    // TCP branch omitted for brevity
-}
-#else
-{
-    sockaddr_storage rtpAddr{}, rtcpAddr{};
-    sockaddr_in* rtp_in = (sockaddr_in*)&rtpAddr;
-    sockaddr_in* rtcp_in = (sockaddr_in*)&rtcpAddr;
-
-    memset(rtp_in, 0, sizeof(sockaddr_in));
-    rtp_in->sin_family = AF_INET;
-    rtp_in->sin_addr.s_addr = inet_addr(serverIp_.c_str());
-    rtp_in->sin_port = htons(rtpPort_);
-
-    memset(rtcp_in, 0, sizeof(sockaddr_in));
-    rtcp_in->sin_family = AF_INET;
-    rtcp_in->sin_addr.s_addr = inet_addr(serverIp_.c_str());
-    rtcp_in->sin_port = htons(rtpPort_ + 1);
-
-    rtpGroupsock_ = new Groupsock(*env_, rtpAddr, Port(htons(rtpPort_)), 255);
-    rtcpGroupsock_ = new Groupsock(*env_, rtcpAddr, Port(htons(rtpPort_ + 1)), 255);
-
-    videoSink_ = H264VideoRTPSink::createNew(*env_, rtpGroupsock_, 96);
-    if (!videoSink_) goto cleanup;
-
-    const unsigned char* cname = reinterpret_cast<const unsigned char*>("live555");
-
-    rtcpInstance_ = RTCPInstance::createNew(*env_, rtcpGroupsock_, 5000, cname, videoSink_, nullptr, False);
-    if (!rtcpInstance_) goto cleanup;
-}
-#endif
-
-    videoSink_->startPlaying(*videoSource_, nullptr, nullptr);
-    std::cout << "[RTPSendingSession] Started streaming RTP to " << serverIp_ << "\n";
-
-    if (rtcpInstance_) {
-        rtcpInstance_->setByeHandler(nullptr, nullptr);
-        rtcpInstance_->setSRHandler(nullptr, nullptr);
-        rtcpInstance_->setRRHandler(nullptr, nullptr);
+    if (size <= maxPayload) {
+        sendRtpPacket(nalu, size, true, timestamp);
+        return;
     }
 
-    env_->taskScheduler().doEventLoop(&running_);
-    std::cout << "[RTPSendingSession] Exiting event loop...\n";
+    uint8_t fuIndicator = (nalHeader & 0xE0) | 28;
+    uint8_t fuHeaderStart = 0x80 | nalType;
+    uint8_t fuHeaderMid = nalType;
+    uint8_t fuHeaderEnd = 0x40 | nalType;
 
-cleanup:
-    if (videoSink_) { Medium::close(videoSink_); videoSink_ = nullptr; }
-    if (videoSource_) { Medium::close(videoSource_); videoSource_ = nullptr; }
-    if (customSource_) { Medium::close(customSource_); customSource_ = nullptr; }
-    if (rtcpInstance_) { Medium::close(rtcpInstance_); rtcpInstance_ = nullptr; }
-    if (rtpGroupsock_) { delete rtpGroupsock_; rtpGroupsock_ = nullptr; }
-    if (rtcpGroupsock_) { delete rtcpGroupsock_; rtcpGroupsock_ = nullptr; }
-    if (env_) { env_->reclaim(); env_ = nullptr; }
-    if (scheduler_) { delete scheduler_; scheduler_ = nullptr; }
+    int pos = 1;
+    while (pos < size) {
+        int remaining = size - pos;
+        int payloadLen = std::min(remaining, maxPayload - 2);
+        uint8_t fuHeader = (pos == 1) ? fuHeaderStart : ((remaining - payloadLen == 0) ? fuHeaderEnd : fuHeaderMid);
+
+        std::vector<uint8_t> buf(2 + payloadLen);
+        buf[0] = fuIndicator;
+        buf[1] = fuHeader;
+        memcpy(buf.data() + 2, nalu + pos, payloadLen);
+
+        sendRtpPacket(buf.data(), buf.size(), (fuHeader & 0x40) != 0, timestamp);
+        pos += payloadLen;
+    }
+}
+
+void RTPSendingSession::parseAndSendFrame(const uint8_t* data, int len, int64_t pts) {
+    int pos = 0;
+    while (pos + 4 < len) {
+        if (data[pos] == 0x00 && data[pos+1] == 0x00 && data[pos+2] == 0x00 && data[pos+3] == 0x01) {
+            int start = pos + 4;
+            int end = len;
+            for (int i = start; i + 4 < len; ++i) {
+                if (data[i] == 0x00 && data[i+1] == 0x00 && data[i+2] == 0x00 && data[i+3] == 0x01) {
+                    end = i;
+                    break;
+                }
+            }
+            packetizeAndSendNalu(data + start, end - start, static_cast<uint32_t>((pts - basePts_) / 1000000.0 * 90000));
+            pos = end;
+        } else {
+            ++pos;
+        }
+    }
 }
