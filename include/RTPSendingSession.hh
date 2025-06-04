@@ -7,10 +7,17 @@
 #include <sys/time.h>
 #include <mutex>
 
+
+// ZLMediaKit secret key for authentication
+#define ZLMEDIAKIT_SRT_KEY "2RY8OlPtstBt96XhkGREio2gW4haRG1E"
+
+// Use RTP over TCP if set to 1, otherwise use UDP
+#define RTP_OVER_TCP 1
+
 /**
  * RTPSendingSession is responsible for sending H264 RTP packets (and RTCP)
- * to a target server via UDP. It performs RTP header packing, NALU fragmentation (FU-A),
- * and RTCP Sender Reports.
+ * to a target server via UDP or TCP. It performs RTP header packing, NALU fragmentation (FU-A),
+ * and RTCP Sender Reports (for UDP).
  */
 class RTPSendingSession {
 public:
@@ -20,7 +27,7 @@ public:
     /**
      * Start the RTP session.
      * @param ip        Target server IP
-     * @param rtpPort   Port to send RTP to (RTCP will use rtpPort+1)
+     * @param rtpPort   Port to send RTP to (RTCP will use rtpPort+1 if UDP)
      * @param streamId  ZLMediaKit stream ID (for openRtpServer API)
      */
     bool start(const std::string& ip, int rtpPort, const std::string& streamId);
@@ -48,6 +55,7 @@ private:
 private:
     int rtpSock_;
     int rtcpSock_;
+    int tcpSock_;
     sockaddr_in rtpAddr_;
     sockaddr_in rtcpAddr_;
     std::string serverIp_;
@@ -55,7 +63,7 @@ private:
     std::string streamId_;
 
     uint16_t rtpSeq_ = 0;
-    uint32_t rtpSsrc_ = 0x12345678;
+    uint32_t rtpSsrc_;
     int64_t basePts_ = -1;
     uint32_t pktCount_ = 0;
     uint32_t octetCount_ = 0;
