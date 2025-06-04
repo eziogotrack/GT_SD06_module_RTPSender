@@ -16,7 +16,7 @@
 //
 // If you want to switch to UDP, just comment the line below
 //
-#define USE_RTP_OVER_TCP
+// #define USE_RTP_OVER_TCP
 
 class RTPSendingSession {
 public:

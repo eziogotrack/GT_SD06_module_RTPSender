@@ -1999,10 +1999,6 @@ random
 -
 
 /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/src/main.cpp
-RTPSendingSession.hh
-/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/src/RTPSendingSession.hh
-ze_rec_read.h
-/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/src/ze_rec_read.h
 iostream
 -
 cstdio
@@ -2013,4 +2009,22 @@ unistd.h
 -
 iomanip
 -
+sstream
+-
+vector
+-
+arpa/inet.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+fcntl.h
+-
+curl/curl.h
+-
+sys/time.h
+-
+ze_rec_read.h
+/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/src/ze_rec_read.h
 
