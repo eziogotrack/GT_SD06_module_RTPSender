@@ -65,8 +65,13 @@ int main(int argc, char** argv) {
 
         sources[s_chn].pushFrame(reinterpret_cast<uint8_t*>(s_frame_buf), s_frame_len, s_frame_pts,
                                  s_chn, s_stream_type, s_frame_type);
-
-        usleep(40000); // simulate 25fps
+                                 
+        // simulate 25fps but for 4 channels
+        // Adjust sleep time based on frame rate
+        // 15fps means 66.67ms per frame, divided by number of channels
+        // to simulate processing time
+        // Here we use 66.67ms / 4 channels = 16.67ms per channel
+        usleep(16667);
     }
 
     ze_mxm_read_close(reader);
