@@ -1,4 +1,3 @@
-// RTPSendingSession.hh
 #ifndef RTP_SENDING_SESSION_HH
 #define RTP_SENDING_SESSION_HH
 
@@ -7,14 +6,14 @@
 #include <sys/time.h>
 #include <mutex>
 
-
 // ZLMediaKit secret key for authentication
-#define ZLMEDIAKIT_SRT_KEY "2RY8OlPtstBt96XhkGREio2gW4haRG1E"
+#define ZLMEDIAKIT_SRT_KEY "bVLJOJnKcSbK7yTXE7DHHlGiHopxZkJT"
 
 /**
  * RTPSendingSession is responsible for sending H264 RTP packets (and RTCP)
- * to a target server via TCP. It performs RTP header packing, NALU fragmentation (FU-A),
- * and RTCP Sender Reports (for TCP).
+ * to a target server via TCP interleaved. It performs RTP header packing,
+ * NALU fragmentation (FU-A), and RTCP Sender Reports.
+ * RTP is sent to port, RTCP is sent to port+1 via two separate TCP connections.
  */
 class RTPSendingSession {
 public:

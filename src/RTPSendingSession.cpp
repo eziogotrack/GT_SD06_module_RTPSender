@@ -53,24 +53,24 @@ bool RTPSendingSession::start(const std::string& ip, int port, const std::string
     std::uniform_int_distribution<uint32_t> dist(1, 0xFFFFFFFF);
     rtpSsrc_ = dist(gen);
 
-    std::ostringstream url;
-    url << "http://" << ip << ":80/index/api/openRtpServer?"
-        << "secret=2RY8OlPtstBt96XhkGREio2gW4haRG1E"
-        << "&port=" << port
-        << "&enable_tcp=1"
-        << "&stream_id=" << streamId;
+    // std::ostringstream url;
+    // url << "http://" << ip << ":80/index/api/openRtpServer?"
+    //     << "secret=dxIISf0mTqoCIyqVPPDpfGEfx3nRKaeZ"
+    //     << "&port=" << port
+    //     << "&enable_tcp=1"
+    //     << "&stream_id=" << streamId;
 
-    CURL* curl = curl_easy_init();
-    if (!curl) return false;
+    // CURL* curl = curl_easy_init();
+    // if (!curl) return false;
 
-    curl_easy_setopt(curl, CURLOPT_URL, url.str().c_str());
-    curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
-    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 5L);
+    // curl_easy_setopt(curl, CURLOPT_URL, url.str().c_str());
+    // curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+    // curl_easy_setopt(curl, CURLOPT_TIMEOUT, 5L);
 
-    CURLcode res = curl_easy_perform(curl);
-    curl_easy_cleanup(curl);
+    // CURLcode res = curl_easy_perform(curl);
+    // curl_easy_cleanup(curl);
 
-    if (res != CURLE_OK) return false;
+    // if (res != CURLE_OK) return false;
 
     return createSockets();
 }
