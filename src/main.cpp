@@ -1,16 +1,25 @@
 // main.cpp
 #include "RTPSendingSession.hh"
 #include "CustomFramedSource.hh"
+<<<<<<< Updated upstream
 #include "ze_rec_read.h"
 #include <iostream>
 #include <iomanip>
 #include <unistd.h>
 #include <vector>
+=======
+#include <chrono>
+#include <thread>
+#include <iostream>
+#include <iomanip>
+#include "ze_rec_read.h" // Assuming you have a library for reading .264 files
+>>>>>>> Stashed changes
 
 #define MAX_CHANNELS 1
 #define FPS_SIMULATION 25
 
 int main(int argc, char** argv) {
+<<<<<<< Updated upstream
     if (argc < 4) {
         std::cerr << "Usage: " << argv[0] << " <input.264> <server_ip> <base_rtp_port>\n";
         return 1;
@@ -19,6 +28,16 @@ int main(int argc, char** argv) {
     std::string inputFile = argv[1];
     std::string serverIp = argv[2];
     int basePort = std::stoi(argv[3]);
+=======
+    if (argc != 3) {
+        printf("Usage: %s <input_file> <server_ip> <rtp_port>\n", argv[0]);
+        return 1;
+    }
+
+    const char* inputFile = argv[1];
+    const char* serverIp = argv[2];
+    int rtpPort = atoi(argv[3]);
+>>>>>>> Stashed changes
 
     // Initialize RTP sessions and sources for each channel
     std::vector<RTPSendingSession> sessions(MAX_CHANNELS);
@@ -48,6 +67,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
+<<<<<<< Updated upstream
     // Read and dispatch frames
     int s_chn, s_stream_type, s_frame_type, s_frame_len = 0;
     s64 s_frame_pts = 0;
@@ -80,5 +100,49 @@ int main(int argc, char** argv) {
     }
 
     std::cout << "All streams finished.\n";
+=======
+    // Open .264 file using ze_mxm
+    ze_mxm_read_t* reader = nullptr;
+    ze_mxm_file_info_t* file_info = nullptr;
+    ze_mxm_read_open(&reader, inputFile, &file_info, 0);
+    if (!reader) {
+        std::cerr << "[ERROR] Failed to open file: " << inputFile << "\n";
+        return 1;
+    }
+
+    // Prepare variables for reading frames
+    int s_chn, s_stream_type, s_frame_type, s_frame_len = 0;
+    s64 s_frame_pts = 0;
+    char s_frame_buf[1024 * 1024]; // 1MB buffer
+    int chn = 0; // target channel
+
+    // Read frames and inject into RTP session
+    while (ze_mxm_read_frame(reader, &s_chn, &s_stream_type, &s_frame_type,
+                              &s_frame_len, &s_frame_pts, s_frame_buf) == 0) {
+        if (s_chn != chn || s_frame_len <= 0) continue;
+
+        if (s_frame_type != FRAME_TYPE_H264I && s_frame_type != FRAME_TYPE_H264P) {
+            continue;
+        }
+
+        std::cout << "Read frame: chn=" << s_chn
+                  << ", type=" << (s_frame_type == FRAME_TYPE_H264I ? "I" : "P")
+                  << ", len=" << s_frame_len
+                  << ", pts=" << std::fixed << std::setprecision(3) 
+                  << (s_frame_pts / 1000000.0) << "s\n";
+
+        // Convert timestamp
+        struct timeval timestamp;
+        timestamp.tv_sec = s_frame_pts / 1000000;
+        timestamp.tv_usec = s_frame_pts % 1000000;
+
+        // Send frame using callback
+        pushFrameCb(reinterpret_cast<unsigned char*>(s_frame_buf), s_frame_len, timestamp);
+    }
+    ze_mxm_read_close(reader);
+    // 5) When you want to stop:
+    session.stop();
+    printf("Session stopped.\n");
+>>>>>>> Stashed changes
     return 0;
 }

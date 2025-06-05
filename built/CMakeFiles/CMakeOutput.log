@@ -29,6 +29,7 @@ The CXX compiler identification is GNU, found in "/home/ezio/workspace/GT_SD06/G
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp
 
+<<<<<<< Updated upstream
 Run Build Command(s):/usr/bin/gmake cmTC_ab592/fast && /usr/bin/gmake -f CMakeFiles/cmTC_ab592.dir/build.make CMakeFiles/cmTC_ab592.dir/build
 gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 Building C object CMakeFiles/cmTC_ab592.dir/testCCompiler.c.o
@@ -36,6 +37,15 @@ Building C object CMakeFiles/cmTC_ab592.dir/testCCompiler.c.o
 Linking C executable cmTC_ab592
 /opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ab592.dir/link.txt --verbose=1
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc      CMakeFiles/cmTC_ab592.dir/testCCompiler.c.o  -o cmTC_ab592 
+=======
+Run Build Command(s):/usr/bin/gmake cmTC_7c89e/fast && /usr/bin/gmake -f CMakeFiles/cmTC_7c89e.dir/build.make CMakeFiles/cmTC_7c89e.dir/build
+gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7c89e.dir/testCCompiler.c.o
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc    -o CMakeFiles/cmTC_7c89e.dir/testCCompiler.c.o   -c /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_7c89e
+/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c89e.dir/link.txt --verbose=1
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc      CMakeFiles/cmTC_7c89e.dir/testCCompiler.c.o  -o cmTC_7c89e 
+>>>>>>> Stashed changes
 gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 
 
@@ -43,18 +53,30 @@ gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSend
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp
 
+<<<<<<< Updated upstream
 Run Build Command(s):/usr/bin/gmake cmTC_6a5b7/fast && /usr/bin/gmake -f CMakeFiles/cmTC_6a5b7.dir/build.make CMakeFiles/cmTC_6a5b7.dir/build
 gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 Building C object CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc   -v -o CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o   -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+=======
+Run Build Command(s):/usr/bin/gmake cmTC_abc9d/fast && /usr/bin/gmake -f CMakeFiles/cmTC_abc9d.dir/build.make CMakeFiles/cmTC_abc9d.dir/build
+gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc   -v -o CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o   -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+>>>>>>> Stashed changes
 Using built-in specs.
 COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc
 Target: arm-mol-linux-uclibcgnueabihf
 Configured with: /home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/src/gcc/configure --build=x86_64-build_pc-linux-gnu --host=x86_64-build_pc-linux-gnu --target=arm-mol-linux-uclibcgnueabihf --prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install --with-sysroot=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-languages=c,c++ --with-cpu=cortex-a7 --with-fpu=vfpv4-d16 --with-float=hard --with-pkgversion=molchipv500-armgcc-uclibc-190826 --enable-__cxa_atexit --disable-libmudflap --disable-libgomp --disable-libssp --disable-libquadmath --disable-libquadmath-support --disable-libsanitizer --with-gmp=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpfr=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpc=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-isl=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-cloog=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --enable-lto --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-multilib --with-local-prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-long-long
 Thread model: posix
 gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) 
+<<<<<<< Updated upstream
 COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
  /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1 -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o -version -o /tmp/cc2Qg1g1.s
+=======
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1 -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccuG3lPC.s
+>>>>>>> Stashed changes
 GNU C (molchipv500-armgcc-uclibc-190826) version 4.9.4 (arm-mol-linux-uclibcgnueabihf)
 	compiled by GNU C version 4.6.3, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -73,6 +95,7 @@ GNU C (molchipv500-armgcc-uclibc-190826) version 4.9.4 (arm-mol-linux-uclibcgnue
 	compiled by GNU C version 4.6.3, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: e0fba3dfab6d9427e55b5ed774e86007
+<<<<<<< Updated upstream
 COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
  /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o /tmp/cc2Qg1g1.s
 GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32
@@ -82,6 +105,17 @@ COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o' 
 Linking C executable cmTC_6a5b7
 /opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a5b7.dir/link.txt --verbose=1
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc     -v CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o  -o cmTC_6a5b7 
+=======
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+ /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o /tmp/ccuG3lPC.s
+GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32
+COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/
+LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+Linking C executable cmTC_abc9d
+/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_abc9d.dir/link.txt --verbose=1
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc     -v CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o  -o cmTC_abc9d 
+>>>>>>> Stashed changes
 Using built-in specs.
 COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc
 COLLECT_LTO_WRAPPER=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper
@@ -91,8 +125,13 @@ Thread model: posix
 gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) 
 COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/
 LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/
+<<<<<<< Updated upstream
 COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6a5b7' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
  /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnHX6mu.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_6a5b7 /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o
+=======
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_abc9d' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPYSu34.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_abc9d /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o
+>>>>>>> Stashed changes
 gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 
 
@@ -116,18 +155,30 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(arm-mol-linux-uclibcgnueabihf-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp]
   ignore line: []
+<<<<<<< Updated upstream
   ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_6a5b7/fast && /usr/bin/gmake -f CMakeFiles/cmTC_6a5b7.dir/build.make CMakeFiles/cmTC_6a5b7.dir/build]
   ignore line: [gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp']
   ignore line: [Building C object CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o]
   ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc   -v -o CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o   -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+=======
+  ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_abc9d/fast && /usr/bin/gmake -f CMakeFiles/cmTC_abc9d.dir/build.make CMakeFiles/cmTC_abc9d.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc   -v -o CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o   -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+>>>>>>> Stashed changes
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc]
   ignore line: [Target: arm-mol-linux-uclibcgnueabihf]
   ignore line: [Configured with: /home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/src/gcc/configure --build=x86_64-build_pc-linux-gnu --host=x86_64-build_pc-linux-gnu --target=arm-mol-linux-uclibcgnueabihf --prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install --with-sysroot=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-languages=c c++ --with-cpu=cortex-a7 --with-fpu=vfpv4-d16 --with-float=hard --with-pkgversion=molchipv500-armgcc-uclibc-190826 --enable-__cxa_atexit --disable-libmudflap --disable-libgomp --disable-libssp --disable-libquadmath --disable-libquadmath-support --disable-libsanitizer --with-gmp=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpfr=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpc=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-isl=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-cloog=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --enable-lto --with-host-libstdcxx='-static-libgcc -Wl -Bstatic -lstdc++ -Bdynamic -lm' --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-multilib --with-local-prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-long-long]
   ignore line: [Thread model: posix]
   ignore line: [gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) ]
+<<<<<<< Updated upstream
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
   ignore line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1 -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o -version -o /tmp/cc2Qg1g1.s]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  ignore line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1 -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccuG3lPC.s]
+>>>>>>> Stashed changes
   ignore line: [GNU C (molchipv500-armgcc-uclibc-190826) version 4.9.4 (arm-mol-linux-uclibcgnueabihf)]
   ignore line: [	compiled by GNU C version 4.6.3  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -146,6 +197,7 @@ Parsed C implicit link information from above output:
   ignore line: [	compiled by GNU C version 4.6.3  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: e0fba3dfab6d9427e55b5ed774e86007]
+<<<<<<< Updated upstream
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
   ignore line: [ /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o /tmp/cc2Qg1g1.s]
   ignore line: [GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32]
@@ -155,6 +207,17 @@ Parsed C implicit link information from above output:
   ignore line: [Linking C executable cmTC_6a5b7]
   ignore line: [/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a5b7.dir/link.txt --verbose=1]
   ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc     -v CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o  -o cmTC_6a5b7 ]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  ignore line: [ /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o /tmp/ccuG3lPC.s]
+  ignore line: [GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32]
+  ignore line: [COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/]
+  ignore line: [LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o' '-c' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  ignore line: [Linking C executable cmTC_abc9d]
+  ignore line: [/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_abc9d.dir/link.txt --verbose=1]
+  ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc     -v CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o  -o cmTC_abc9d ]
+>>>>>>> Stashed changes
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-gcc]
   ignore line: [COLLECT_LTO_WRAPPER=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper]
@@ -164,13 +227,22 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) ]
   ignore line: [COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/]
   ignore line: [LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/]
+<<<<<<< Updated upstream
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6a5b7' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
   link line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnHX6mu.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_6a5b7 /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_abc9d' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  link line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPYSu34.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_abc9d /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o]
+>>>>>>> Stashed changes
     arg [/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper] ==> ignore
+<<<<<<< Updated upstream
     arg [-plugin-opt=-fresolution=/tmp/ccnHX6mu.res] ==> ignore
+=======
+    arg [-plugin-opt=-fresolution=/tmp/ccPYSu34.res] ==> ignore
+>>>>>>> Stashed changes
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -184,7 +256,11 @@ Parsed C implicit link information from above output:
     arg [-m] ==> ignore
     arg [armelf_linux_eabi] ==> ignore
     arg [-o] ==> ignore
+<<<<<<< Updated upstream
     arg [cmTC_6a5b7] ==> ignore
+=======
+    arg [cmTC_abc9d] ==> ignore
+>>>>>>> Stashed changes
     arg [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o] ==> ignore
     arg [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o] ==> ignore
     arg [/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o] ==> ignore
@@ -193,7 +269,11 @@ Parsed C implicit link information from above output:
     arg [-L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib] ==> dir [/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib]
     arg [-L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib] ==> dir [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib]
     arg [-L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib] ==> dir [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib]
+<<<<<<< Updated upstream
     arg [CMakeFiles/cmTC_6a5b7.dir/CMakeCCompilerABI.c.o] ==> ignore
+=======
+    arg [CMakeFiles/cmTC_abc9d.dir/CMakeCCompilerABI.c.o] ==> ignore
+>>>>>>> Stashed changes
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -218,6 +298,7 @@ Parsed C implicit link information from above output:
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp
 
+<<<<<<< Updated upstream
 Run Build Command(s):/usr/bin/gmake cmTC_7aeb8/fast && /usr/bin/gmake -f CMakeFiles/cmTC_7aeb8.dir/build.make CMakeFiles/cmTC_7aeb8.dir/build
 gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 Building CXX object CMakeFiles/cmTC_7aeb8.dir/testCXXCompiler.cxx.o
@@ -225,6 +306,15 @@ Building CXX object CMakeFiles/cmTC_7aeb8.dir/testCXXCompiler.cxx.o
 Linking CXX executable cmTC_7aeb8
 /opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7aeb8.dir/link.txt --verbose=1
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++       CMakeFiles/cmTC_7aeb8.dir/testCXXCompiler.cxx.o  -o cmTC_7aeb8 
+=======
+Run Build Command(s):/usr/bin/gmake cmTC_d2611/fast && /usr/bin/gmake -f CMakeFiles/cmTC_d2611.dir/build.make CMakeFiles/cmTC_d2611.dir/build
+gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d2611.dir/testCXXCompiler.cxx.o
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++     -o CMakeFiles/cmTC_d2611.dir/testCXXCompiler.cxx.o -c /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_d2611
+/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2611.dir/link.txt --verbose=1
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++       CMakeFiles/cmTC_d2611.dir/testCXXCompiler.cxx.o  -o cmTC_d2611 
+>>>>>>> Stashed changes
 gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 
 
@@ -232,18 +322,30 @@ gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSend
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp
 
+<<<<<<< Updated upstream
 Run Build Command(s):/usr/bin/gmake cmTC_d98fd/fast && /usr/bin/gmake -f CMakeFiles/cmTC_d98fd.dir/build.make CMakeFiles/cmTC_d98fd.dir/build
 gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 Building CXX object CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++    -v -o CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+=======
+Run Build Command(s):/usr/bin/gmake cmTC_4f313/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4f313.dir/build.make CMakeFiles/cmTC_4f313.dir/build
+gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++    -v -o CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+>>>>>>> Stashed changes
 Using built-in specs.
 COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++
 Target: arm-mol-linux-uclibcgnueabihf
 Configured with: /home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/src/gcc/configure --build=x86_64-build_pc-linux-gnu --host=x86_64-build_pc-linux-gnu --target=arm-mol-linux-uclibcgnueabihf --prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install --with-sysroot=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-languages=c,c++ --with-cpu=cortex-a7 --with-fpu=vfpv4-d16 --with-float=hard --with-pkgversion=molchipv500-armgcc-uclibc-190826 --enable-__cxa_atexit --disable-libmudflap --disable-libgomp --disable-libssp --disable-libquadmath --disable-libquadmath-support --disable-libsanitizer --with-gmp=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpfr=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpc=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-isl=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-cloog=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --enable-lto --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-multilib --with-local-prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-long-long
 Thread model: posix
 gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) 
+<<<<<<< Updated upstream
 COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
  /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1plus -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot -D_GNU_SOURCE /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccSCa2vg.s
+=======
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1plus -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot -D_GNU_SOURCE /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccGP4aSG.s
+>>>>>>> Stashed changes
 GNU C++ (molchipv500-armgcc-uclibc-190826) version 4.9.4 (arm-mol-linux-uclibcgnueabihf)
 	compiled by GNU C version 4.6.3, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -268,6 +370,7 @@ GNU C++ (molchipv500-armgcc-uclibc-190826) version 4.9.4 (arm-mol-linux-uclibcgn
 	compiled by GNU C version 4.6.3, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 12a1e05653e8c6862f47ae76e8a9d710
+<<<<<<< Updated upstream
 COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
  /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccSCa2vg.s
 GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32
@@ -277,6 +380,17 @@ COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp
 Linking CXX executable cmTC_d98fd
 /opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d98fd.dir/link.txt --verbose=1
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++      -v CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_d98fd 
+=======
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+ /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccGP4aSG.s
+GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32
+COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/
+LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+Linking CXX executable cmTC_4f313
+/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f313.dir/link.txt --verbose=1
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++      -v CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4f313 
+>>>>>>> Stashed changes
 Using built-in specs.
 COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++
 COLLECT_LTO_WRAPPER=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper
@@ -286,8 +400,13 @@ Thread model: posix
 gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) 
 COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/
 LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/
+<<<<<<< Updated upstream
 COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d98fd' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
  /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccfKfzLK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_d98fd /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o
+=======
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4f313' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu'
+ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJwFZ64.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_4f313 /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o
+>>>>>>> Stashed changes
 gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 
 
@@ -317,18 +436,30 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(arm-mol-linux-uclibcgnueabihf-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp]
   ignore line: []
+<<<<<<< Updated upstream
   ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_d98fd/fast && /usr/bin/gmake -f CMakeFiles/cmTC_d98fd.dir/build.make CMakeFiles/cmTC_d98fd.dir/build]
   ignore line: [gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp']
   ignore line: [Building CXX object CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o]
   ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++    -v -o CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+=======
+  ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_4f313/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4f313.dir/build.make CMakeFiles/cmTC_4f313.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++    -v -o CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o -c /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+>>>>>>> Stashed changes
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++]
   ignore line: [Target: arm-mol-linux-uclibcgnueabihf]
   ignore line: [Configured with: /home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/src/gcc/configure --build=x86_64-build_pc-linux-gnu --host=x86_64-build_pc-linux-gnu --target=arm-mol-linux-uclibcgnueabihf --prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install --with-sysroot=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-languages=c c++ --with-cpu=cortex-a7 --with-fpu=vfpv4-d16 --with-float=hard --with-pkgversion=molchipv500-armgcc-uclibc-190826 --enable-__cxa_atexit --disable-libmudflap --disable-libgomp --disable-libssp --disable-libquadmath --disable-libquadmath-support --disable-libsanitizer --with-gmp=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpfr=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-mpc=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-isl=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --with-cloog=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/gcc_build/.build/arm-mol-linux-uclibcgnueabihf/buildtools --enable-lto --with-host-libstdcxx='-static-libgcc -Wl -Bstatic -lstdc++ -Bdynamic -lm' --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-multilib --with-local-prefix=/home/likewise-open/MOLCHIP/jason.qin/crosstool-molchip/_install/arm-mol-linux-uclibcgnueabihf/sysroot --enable-long-long]
   ignore line: [Thread model: posix]
   ignore line: [gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) ]
+<<<<<<< Updated upstream
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
   ignore line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1plus -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot -D_GNU_SOURCE /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccSCa2vg.s]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  ignore line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/cc1plus -quiet -v -iprefix /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/ -isysroot /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot -D_GNU_SOURCE /opt/cmake-3.16/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -mtls-dialect=gnu -auxbase-strip CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/ccGP4aSG.s]
+>>>>>>> Stashed changes
   ignore line: [GNU C++ (molchipv500-armgcc-uclibc-190826) version 4.9.4 (arm-mol-linux-uclibcgnueabihf)]
   ignore line: [	compiled by GNU C version 4.6.3  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -353,6 +484,7 @@ Parsed CXX implicit link information from above output:
   ignore line: [	compiled by GNU C version 4.6.3  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 12a1e05653e8c6862f47ae76e8a9d710]
+<<<<<<< Updated upstream
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
   ignore line: [ /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccSCa2vg.s]
   ignore line: [GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32]
@@ -362,6 +494,17 @@ Parsed CXX implicit link information from above output:
   ignore line: [Linking CXX executable cmTC_d98fd]
   ignore line: [/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d98fd.dir/link.txt --verbose=1]
   ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++      -v CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_d98fd ]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  ignore line: [ /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/as -v -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=vfpv4-d16 -meabi=5 -o CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccGP4aSG.s]
+  ignore line: [GNU assembler version 2.32 (arm-mol-linux-uclibcgnueabihf) using BFD version (molchipv500-armgcc-uclibc-190826) 2.32]
+  ignore line: [COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/]
+  ignore line: [LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  ignore line: [Linking CXX executable cmTC_4f313]
+  ignore line: [/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f313.dir/link.txt --verbose=1]
+  ignore line: [/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++      -v CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4f313 ]
+>>>>>>> Stashed changes
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++]
   ignore line: [COLLECT_LTO_WRAPPER=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper]
@@ -371,13 +514,22 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.9.4 (molchipv500-armgcc-uclibc-190826) ]
   ignore line: [COMPILER_PATH=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/bin/]
   ignore line: [LIBRARY_PATH=/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/:/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib/:/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/]
+<<<<<<< Updated upstream
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d98fd' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
   link line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccfKfzLK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_d98fd /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o]
+=======
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4f313' '-shared-libgcc' '-mcpu=cortex-a7' '-mfloat-abi=hard' '-mfpu=vfpv4-d16' '-mtls-dialect=gnu']
+  link line: [ /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2 -plugin /opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so -plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJwFZ64.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot --eh-frame-hdr -dynamic-linker /lib/ld-uClibc.so.0 -X -m armelf_linux_eabi -o cmTC_4f313 /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4 -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc -L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib -L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtend.o /opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crtn.o]
+>>>>>>> Stashed changes
     arg [/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/opt/molchip/arm-molchip-linux/bin/../libexec/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/lto-wrapper] ==> ignore
+<<<<<<< Updated upstream
     arg [-plugin-opt=-fresolution=/tmp/ccfKfzLK.res] ==> ignore
+=======
+    arg [-plugin-opt=-fresolution=/tmp/ccJwFZ64.res] ==> ignore
+>>>>>>> Stashed changes
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -391,7 +543,11 @@ Parsed CXX implicit link information from above output:
     arg [-m] ==> ignore
     arg [armelf_linux_eabi] ==> ignore
     arg [-o] ==> ignore
+<<<<<<< Updated upstream
     arg [cmTC_d98fd] ==> ignore
+=======
+    arg [cmTC_4f313] ==> ignore
+>>>>>>> Stashed changes
     arg [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crt1.o] ==> ignore
     arg [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib/crti.o] ==> ignore
     arg [/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/crtbegin.o] ==> ignore
@@ -400,7 +556,11 @@ Parsed CXX implicit link information from above output:
     arg [-L/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib] ==> dir [/opt/molchip/arm-molchip-linux/bin/../lib/gcc/arm-mol-linux-uclibcgnueabihf/4.9.4/../../../../arm-mol-linux-uclibcgnueabihf/lib]
     arg [-L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib] ==> dir [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/lib]
     arg [-L/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib] ==> dir [/opt/molchip/arm-molchip-linux/bin/../arm-mol-linux-uclibcgnueabihf/sysroot/usr/lib]
+<<<<<<< Updated upstream
     arg [CMakeFiles/cmTC_d98fd.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+=======
+    arg [CMakeFiles/cmTC_4f313.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+>>>>>>> Stashed changes
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -425,6 +585,7 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp
 
+<<<<<<< Updated upstream
 Run Build Command(s):/usr/bin/gmake cmTC_17c8d/fast && /usr/bin/gmake -f CMakeFiles/cmTC_17c8d.dir/build.make CMakeFiles/cmTC_17c8d.dir/build
 gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 Building CXX object CMakeFiles/cmTC_17c8d.dir/feature_tests.cxx.o
@@ -432,6 +593,15 @@ Building CXX object CMakeFiles/cmTC_17c8d.dir/feature_tests.cxx.o
 Linking CXX executable cmTC_17c8d
 /opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17c8d.dir/link.txt --verbose=1
 /opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++       CMakeFiles/cmTC_17c8d.dir/feature_tests.cxx.o  -o cmTC_17c8d 
+=======
+Run Build Command(s):/usr/bin/gmake cmTC_35f43/fast && /usr/bin/gmake -f CMakeFiles/cmTC_35f43.dir/build.make CMakeFiles/cmTC_35f43.dir/build
+gmake[1]: Entering directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_35f43.dir/feature_tests.cxx.o
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++    -std=c++14 -o CMakeFiles/cmTC_35f43.dir/feature_tests.cxx.o -c /home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_35f43
+/opt/cmake-3.16/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35f43.dir/link.txt --verbose=1
+/opt/molchip/arm-molchip-linux/bin/arm-mol-linux-uclibcgnueabihf-g++       CMakeFiles/cmTC_35f43.dir/feature_tests.cxx.o  -o cmTC_35f43 
+>>>>>>> Stashed changes
 gmake[1]: Leaving directory '/home/ezio/workspace/GT_SD06/GT_SD06_module_RTPSender/built/CMakeFiles/CMakeTmp'
 
 
