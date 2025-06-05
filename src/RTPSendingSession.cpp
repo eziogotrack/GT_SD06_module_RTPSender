@@ -37,7 +37,7 @@ struct RtcpHeader {
 };
 #pragma pack(pop)
 
-RTPSendingSession::RTPSendingSession() : rtpSock_(-1), rtcpSock_(-1), tcpSock_(-1) {}
+RTPSendingSession::RTPSendingSession() : tcpSock_(-1) {}
 
 RTPSendingSession::~RTPSendingSession() {
     stop();
@@ -48,7 +48,6 @@ bool RTPSendingSession::start(const std::string& ip, int port, const std::string
     rtpPort_ = port;
     streamId_ = streamId;
 
-    // Generate random SSRC
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<uint32_t> dist(1, 0xFFFFFFFF);
@@ -58,7 +57,7 @@ bool RTPSendingSession::start(const std::string& ip, int port, const std::string
     url << "http://" << ip << ":80/index/api/openRtpServer?"
         << "secret=2RY8OlPtstBt96XhkGREio2gW4haRG1E"
         << "&port=" << port
-        << "&enable_tcp=" << (RTP_OVER_TCP ? 1 : 0)
+        << "&enable_tcp=1"
         << "&stream_id=" << streamId;
 
     CURL* curl = curl_easy_init();
@@ -77,13 +76,14 @@ bool RTPSendingSession::start(const std::string& ip, int port, const std::string
 }
 
 void RTPSendingSession::stop() {
-    if (rtpSock_ >= 0) close(rtpSock_);
-    if (rtcpSock_ >= 0) close(rtcpSock_);
-    if (tcpSock_ >= 0) close(tcpSock_);
+    if (tcpSock_ >= 0) {
+        close(tcpSock_);
+        tcpSock_ = -1;
+    }
 }
 
 bool RTPSendingSession::createSockets() {
-#if RTP_OVER_TCP
+    std::cout << "Using RTP/RTCP over TCP interleaved\n";
     tcpSock_ = socket(AF_INET, SOCK_STREAM, 0);
     if (tcpSock_ < 0) return false;
 
@@ -97,36 +97,22 @@ bool RTPSendingSession::createSockets() {
         tcpSock_ = -1;
         return false;
     }
-#else
-    rtpSock_ = socket(AF_INET, SOCK_DGRAM, 0);
-    rtcpSock_ = socket(AF_INET, SOCK_DGRAM, 0);
-    if (rtpSock_ < 0 || rtcpSock_ < 0) return false;
 
-    memset(&rtpAddr_, 0, sizeof(rtpAddr_));
-    rtpAddr_.sin_family = AF_INET;
-    rtpAddr_.sin_port = htons(rtpPort_);
-    inet_pton(AF_INET, serverIp_.c_str(), &rtpAddr_.sin_addr);
-
-    memset(&rtcpAddr_, 0, sizeof(rtcpAddr_));
-    rtcpAddr_.sin_family = AF_INET;
-    rtcpAddr_.sin_port = htons(rtpPort_ + 1);
-    inet_pton(AF_INET, serverIp_.c_str(), &rtcpAddr_.sin_addr);
-#endif
     return true;
 }
 
 void RTPSendingSession::sendFrame(const uint8_t* data, int len, int64_t pts) {
     std::lock_guard<std::mutex> lock(sendMutex_);
     if (basePts_ < 0) basePts_ = pts;
+
     int64_t delta = pts - basePts_;
     uint32_t timestamp = static_cast<uint32_t>((delta / 1000000.0) * 90000);
     parseAndSendFrame(data, len, pts);
-#if !RTP_OVER_TCP
+
     if ((pts - lastRtcpPts_) >= 1000000) {
         sendRtcpSr(timestamp);
         lastRtcpPts_ = pts;
     }
-#endif
 }
 
 void RTPSendingSession::sendRtpPacket(const uint8_t* payload, size_t size, bool marker, uint32_t timestamp) {
@@ -141,7 +127,6 @@ void RTPSendingSession::sendRtpPacket(const uint8_t* payload, size_t size, bool 
     memcpy(packet.data(), &header, sizeof(header));
     memcpy(packet.data() + sizeof(header), payload, size);
 
-#if RTP_OVER_TCP
     uint8_t channel = 0;
     uint16_t pktLen = htons(packet.size());
     std::vector<uint8_t> tcpFrame(4 + packet.size());
@@ -149,12 +134,11 @@ void RTPSendingSession::sendRtpPacket(const uint8_t* payload, size_t size, bool 
     tcpFrame[1] = channel;
     memcpy(&tcpFrame[2], &pktLen, 2);
     memcpy(&tcpFrame[4], packet.data(), packet.size());
+
     send(tcpSock_, tcpFrame.data(), tcpFrame.size(), 0);
-#else
-    sendto(rtpSock_, packet.data(), packet.size(), 0, (sockaddr*)&rtpAddr_, sizeof(rtpAddr_));
+
     pktCount_++;
     octetCount_ += size;
-#endif
 }
 
 void RTPSendingSession::sendRtcpSr(uint32_t timestamp) {
@@ -172,7 +156,14 @@ void RTPSendingSession::sendRtcpSr(uint32_t timestamp) {
     sr.packet_count = htonl(pktCount_);
     sr.octet_count = htonl(octetCount_);
 
-    sendto(rtcpSock_, &sr, sizeof(sr), 0, (sockaddr*)&rtcpAddr_, sizeof(rtcpAddr_));
+    std::vector<uint8_t> tcpFrame(4 + sizeof(RtcpHeader));
+    tcpFrame[0] = '$';
+    tcpFrame[1] = 1; // channel 1 for RTCP
+    uint16_t len = htons(sizeof(RtcpHeader));
+    memcpy(&tcpFrame[2], &len, 2);
+    memcpy(&tcpFrame[4], &sr, sizeof(RtcpHeader));
+
+    send(tcpSock_, tcpFrame.data(), tcpFrame.size(), 0);
 }
 
 void RTPSendingSession::packetizeAndSendNalu(const uint8_t* nalu, int size, uint32_t timestamp) {
@@ -209,11 +200,11 @@ void RTPSendingSession::packetizeAndSendNalu(const uint8_t* nalu, int size, uint
 void RTPSendingSession::parseAndSendFrame(const uint8_t* data, int len, int64_t pts) {
     int pos = 0;
     while (pos + 4 < len) {
-        if (data[pos] == 0x00 && data[pos+1] == 0x00 && data[pos+2] == 0x00 && data[pos+3] == 0x01) {
+        if (data[pos] == 0x00 && data[pos + 1] == 0x00 && data[pos + 2] == 0x00 && data[pos + 3] == 0x01) {
             int start = pos + 4;
             int end = len;
             for (int i = start; i + 4 < len; ++i) {
-                if (data[i] == 0x00 && data[i+1] == 0x00 && data[i+2] == 0x00 && data[i+3] == 0x01) {
+                if (data[i] == 0x00 && data[i + 1] == 0x00 && data[i + 2] == 0x00 && data[i + 3] == 0x01) {
                     end = i;
                     break;
                 }

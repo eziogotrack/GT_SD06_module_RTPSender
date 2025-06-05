@@ -11,13 +11,10 @@
 // ZLMediaKit secret key for authentication
 #define ZLMEDIAKIT_SRT_KEY "2RY8OlPtstBt96XhkGREio2gW4haRG1E"
 
-// Use RTP over TCP if set to 1, otherwise use UDP
-#define RTP_OVER_TCP 0
-
 /**
  * RTPSendingSession is responsible for sending H264 RTP packets (and RTCP)
- * to a target server via UDP or TCP. It performs RTP header packing, NALU fragmentation (FU-A),
- * and RTCP Sender Reports (for UDP).
+ * to a target server via TCP. It performs RTP header packing, NALU fragmentation (FU-A),
+ * and RTCP Sender Reports (for TCP).
  */
 class RTPSendingSession {
 public:

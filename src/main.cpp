@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <vector>
 
-#define MAX_CHANNELS 4
+#define MAX_CHANNELS 1
 #define FPS_SIMULATION 25
 
 int main(int argc, char** argv) {
